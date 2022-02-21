@@ -1,8 +1,11 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import React from "react";
+import App from "./App";
+import { mount } from "@cypress/react";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+it("renders learn react link", () => {
+  mount(<App />);
+
+  cy.get("p").contains("src/App.js");
+  cy.get("button").click();
+  cy.get("p").contains("src/App.test.js");
 });
